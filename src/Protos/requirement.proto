@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+option csharp_namespace = "GrpcPostgreSqlProject.Protos";
+
+package requirement;
+
+// The Requirement service definition.
+service RequirementService {
+    // RPC method to insert a new requirement.
+    rpc InsertRequirement(InsertRequirementRequest) returns (InsertRequirementResponse);
+}
+
+// The request message for inserting a requirement.
+message InsertRequirementRequest {
+    string justification = 1;
+    string detail = 2;
+    string git_link = 3;
+    string registration_date = 4;
+    string registration_time = 5;
+    string manual_date = 6;
+    string ticket_mesa = 7;
+    string programmer = 8;
+    string requester = 9;
+    string system = 10;
+    string qa = 11;
+}
+
+// The response message for inserting a requirement.
+message InsertRequirementResponse {
+    bool success = 1;
+    string message = 2;
+}

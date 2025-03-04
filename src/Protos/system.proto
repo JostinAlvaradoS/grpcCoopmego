@@ -1,0 +1,58 @@
+syntax = "proto3";
+
+option csharp_namespace = "GrpcPostgreSqlProject.Protos";
+
+package system;
+
+// The System service definition.
+service SystemService {
+    // Inserts a new system.
+    rpc InsertSystem(SystemRequest) returns (SystemResponse);
+    
+    // Retrieves a system by ID.
+    rpc GetSystem(SystemIdRequest) returns (SystemResponse);
+    
+    // Updates an existing system.
+    rpc UpdateSystem(SystemRequest) returns (SystemResponse);
+    
+    // Deletes a system by ID.
+    rpc DeleteSystem(SystemIdRequest) returns (EmptyResponse);
+}
+
+// The request message for inserting or updating a system.
+message SystemRequest {
+    int32 id = 1;
+    string name = 2;
+    string url = 3;
+    string implementation_date = 4;
+    string current_version = 5;
+    string logo = 6;
+    string description = 7;
+    string validity = 8;
+    string type = 9;
+    string production_date = 10;
+    string update_date = 11;
+}
+
+// The response message containing system details.
+message SystemResponse {
+    int32 id = 1;
+    string name = 2;
+    string url = 3;
+    string implementation_date = 4;
+    string current_version = 5;
+    string logo = 6;
+    string description = 7;
+    string validity = 8;
+    string type = 9;
+    string production_date = 10;
+    string update_date = 11;
+}
+
+// The request message for retrieving or deleting a system by ID.
+message SystemIdRequest {
+    int32 id = 1;
+}
+
+// The response message for delete operations.
+message EmptyResponse {}

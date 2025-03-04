@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+option csharp_namespace = "GrpcPostgreSqlProject.Protos";
+
+package objectbase;
+
+// The ObjectService definition.
+service ObjectService {
+    // RPC method for inserting an object base.
+    rpc InsertObject(ObjectRequest) returns (ObjectResponse);
+    
+    // RPC method for retrieving an object base by ID.
+    rpc GetObject(ObjectIdRequest) returns (ObjectResponse);
+    
+    // RPC method for updating an object base.
+    rpc UpdateObject(ObjectRequest) returns (ObjectResponse);
+    
+    // RPC method for deleting an object base by ID.
+    rpc DeleteObject(ObjectIdRequest) returns (EmptyResponse);
+}
+
+// The request message for inserting or updating an object base.
+message ObjectRequest {
+    int32 req_id = 1;
+    int32 base_id = 2;
+    string sp = 3;
+}
+
+// The request message for retrieving or deleting an object base by ID.
+message ObjectIdRequest {
+    int32 base_id = 1;
+}
+
+// The response message for object base operations.
+message ObjectResponse {
+    int32 req_id = 1;
+    int32 base_id = 2;
+    string sp = 3;
+}
+
+// An empty response message.
+message EmptyResponse {}

@@ -1,0 +1,54 @@
+syntax = "proto3";
+
+option csharp_namespace = "GrpcPostgreSqlProject.Protos";
+
+package user;
+
+// The User service definition.
+service UserService {
+    rpc InsertUser (UserRequest) returns (UserResponse);
+    rpc GetUser (GetUserRequest) returns (UserResponse);
+    rpc UpdateUser (UpdateUserRequest) returns (UserResponse);
+    rpc DeleteUser (DeleteUserRequest) returns (DeleteUserResponse);
+}
+
+// The request message for inserting a user.
+message UserRequest {
+    string name = 1;
+    string cedula = 2;
+    string login_name = 3;
+    string login_git = 4;
+}
+
+// The response message for user operations.
+message UserResponse {
+    string id = 1;
+    string name = 2;
+    string cedula = 3;
+    string login_name = 4;
+    string login_git = 5;
+}
+
+// The request message for getting a user.
+message GetUserRequest {
+    string id = 1;
+}
+
+// The request message for updating a user.
+message UpdateUserRequest {
+    string id = 1;
+    string name = 2;
+    string cedula = 3;
+    string login_name = 4;
+    string login_git = 5;
+}
+
+// The request message for deleting a user.
+message DeleteUserRequest {
+    string id = 1;
+}
+
+// The response message for deleting a user.
+message DeleteUserResponse {
+    bool success = 1;
+}
